@@ -1,9 +1,15 @@
 <template>
   <button
     class="container-full btn-big"
-    :disabled="demand && demand.status != statuses.EMPTY && demand.status != statuses.RESULT"
+    :disabled="
+      demand &&
+        demand.status != statuses.EMPTY &&
+        demand.status != statuses.RESULT
+    "
     @click="submit"
-  >{{$t('offsettingcommon.order')}}</button>
+  >
+    {{ $t("offsettingcommon.order") }}
+  </button>
 </template>
 
 <script>

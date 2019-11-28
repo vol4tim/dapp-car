@@ -1,16 +1,16 @@
-import Car from '@/views/Car';
-import Router from 'vue-router';
-import Vue from 'vue';
+import Vue from "vue";
+import Router from "vue-router";
+import Car from "@/views/Car";
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'car',
+      path: "/",
+      name: "car",
       component: Car
     },
-    { path: '*', redirect: '/' }
+    { path: "*", redirect: "/" }
   ]
 });
