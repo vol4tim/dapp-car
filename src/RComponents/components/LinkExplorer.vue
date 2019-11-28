@@ -1,15 +1,22 @@
 <template>
   <a :href="href" target="_blank" :class="classStyle" :title="text">
-    <img v-if="type === 'chain'" :src="icon()" class="avatar-small align-vertical m-r-10" alt />
+    <Avatar
+      v-if="type === 'chain'"
+      :address="text"
+      class="avatar-small align-vertical m-r-10"
+    />
     <b>{{ label }}</b>
   </a>
 </template>
 
 <script>
-import makeBlockie from "ethereum-blockies-base64";
+import Avatar from "./Avatar";
 import * as filters from "../tools/filters";
 
 export default {
+  components: {
+    Avatar
+  },
   props: {
     type: {
       type: String,
@@ -46,11 +53,6 @@ export default {
       return this.isSlice
         ? this.text.slice(0, 6) + "..." + this.text.slice(-4)
         : this.text;
-    }
-  },
-  methods: {
-    icon() {
-      return this.text ? makeBlockie(this.text) : "";
     }
   }
 };

@@ -1,8 +1,6 @@
 export default {
-  CHAINS: [1, 4451, 4],
   ROBONOMICS: {
-    version: 5,
-    model: 'QmfK3LyEPLoYJCKXate1PceGLBNBaodwqcV9XirwHZFbsc',
-    objective: 'QmRC1Sg4kGwbgUSDWbKc41HGHVP49W4vfG4GQLwgac1QV8'
+    model: "Qma6q6LPBb3SvG7z235Yv6aoXx4K7RpHNSoPxvPKUyotk8",
+    objective: "QmVSodaBjSBPG4JVDu99Xo7EqBjoYoLSsWdg3j2nGgkMKA"
   }
 };

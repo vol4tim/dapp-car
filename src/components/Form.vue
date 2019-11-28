@@ -1,10 +1,12 @@
 <template>
   <form>
     <section>
-      <div class="form-item form-line-label" :class="{disabled: isDisabled}">
+      <div class="form-item form-line-label" :class="{ disabled: isDisabled }">
         <label for="inputdata-cost">
           Cost *
-          <span v-if="form.fields.cost.error" class="input-msg">Check if data correct, please.</span>
+          <span v-if="form.fields.cost.error" class="input-msg"
+            >Check if data correct, please.</span
+          >
         </label>
         <input
           :disabled="isDisabled"

@@ -3,14 +3,23 @@
     <section class="section-light section-centered">
       <h2>Car</h2>
       <Form ref="form" :onChange="onChange" :onSubmit="onSubmit" />
-      <Approve v-if="cost > 0" :address="token" :cost="cost" :onFetch="onAllowance" />
+      <Approve
+        v-if="cost > 0"
+        :address="token"
+        :cost="cost"
+        :onFetch="onAllowance"
+      />
       <Order
         ref="order"
         v-if="allowance >= cost && (!demand || demand.status < statuses.RESULT)"
         :submit="submit"
         :onDemand="onDemand"
       />
-      <Steps v-if="demand" :status="demand.status" :liability="demand.liability" />
+      <Steps
+        v-if="demand"
+        :status="demand.status"
+        :liability="demand.liability"
+      />
     </section>
   </Page>
 </template>
@@ -22,7 +31,7 @@ import Form from "@/components/Form";
 import Approve from "@/components/approve/Main";
 import Steps from "@/components/Steps";
 import Order from "@/components/Order";
-import config from "../config";
+import config from "~config";
 
 export default {
   data() {
@@ -62,7 +71,7 @@ export default {
       this.$refs.form.submit();
     },
     onChange(fields) {
-      this.cost = fields.cost.value;
+      this.cost = Number(fields.cost.value);
     },
     onSubmit(e, fields) {
       if (!e) {
@@ -79,7 +88,7 @@ export default {
       }
     },
     onAllowance({ allowance }) {
-      this.allowance = allowance;
+      this.allowance = Number(allowance);
     },
     onDemand(demandId) {
       this.demandId = demandId;
