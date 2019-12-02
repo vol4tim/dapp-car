@@ -4,9 +4,10 @@
       <div class="form-item form-line-label">
         <label for="inputdata-amount">
           Amount *
-          <span v-if="form.fields.amount.error" class="input-msg"
-            >Check if data correct, please.</span
-          >
+          <span
+            v-if="form.fields.amount.error"
+            class="input-msg"
+          >Check if data correct, please.</span>
         </label>
         <input
           v-model="form.fields.amount.value"
@@ -19,11 +20,9 @@
     </section>
     <button
       class="container-full btn-big"
-      :disabled="loadingApprove || balance < form.fields.amount.value"
+      :disabled="loadingApprove || Number(balance) < Number(form.fields.amount.value)"
       @click="sendApproveTrade"
-    >
-      {{ $t("approve.approve") }}
-    </button>
+    >{{ $t("approve.approve") }}</button>
   </form>
 </template>
 
@@ -54,7 +53,7 @@ export default {
     };
   },
   mounted() {
-    this.form.fields.amount.value = this.cost;
+    this.form.fields.amount.value = Number(this.cost);
     this.initToken(this.address).then(this.fetchData);
   },
   methods: {
@@ -122,7 +121,7 @@ export default {
         return this.token.methods
           .approve(
             this.$robonomics.factory.address,
-            number.fromWei(this.form.fields.amount.value, this.decimals)
+            number.toWei(this.form.fields.amount.value, this.decimals)
           )
           .send({
             from: this.$robonomics.account.address
